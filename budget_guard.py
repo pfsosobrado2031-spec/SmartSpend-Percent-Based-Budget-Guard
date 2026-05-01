@@ -3,7 +3,6 @@ Project Title: SmartSpend Budget Guard
 Group Members: Sosobrado, Viray, Abasolo
 Description: This program tracks spending across multiple categories and provides a summary of budget health.
 """
-
 def GetValidAmount():
     # Input Validation
     amount = float(input("    Enter amount spent: "))
@@ -11,6 +10,7 @@ def GetValidAmount():
         print("    Error: Amount cannot be negative.")
         amount = float(input("    Enter amount spent: "))
     return amount
+    
 def ShowFinalFeedback(percent_used):
     # Selection Structure for Feedback
     print("\n--- FINAL BUDGET REPORT ---")
