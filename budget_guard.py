@@ -42,3 +42,47 @@ def Main():
             print("    Error: Budget cannot exceed your allowance.")
         budget = float(input("Enter target budget: "))
         
+num_categories = int(input("How many categories? "))
+    
+    # Variables for determining which is the highest and low costing category
+    total_spent = 0
+    highest_amt = 0
+    highest_name = ""
+    lowest_amt = 999999999999999999999999999999999999999999999999999999999999999
+    lowest_name = ""
+
+    # Amount and percentage spent in category
+    for i in range(num_categories):
+        print("-" * 35)
+        print("Category #", i + 1)
+        name = input("    Name: ")
+        spent = GetValidAmount()
+        
+        total_spent = total_spent + spent
+        
+        cat_percent = round((spent / budget) * 100, 2)
+        print("    > This category uses", cat_percent, "% of your budget.")
+
+        # Logic to update Highest/Lowest
+        if spent > highest_amt:
+            highest_amt = spent
+            highest_name = name
+        
+        if spent < lowest_amt:
+            lowest_amt = spent
+            lowest_name = name
+
+    # Final Summary
+    remaining = allowance - total_spent
+    total_percent = (total_spent / budget) * 100
+
+    print("\n" + "=" * 35)
+    print("TOTAL SPENT:    ", round(total_spent, 2))
+    print("MONEY LEFT:     ", round(remaining, 2))
+    print("HIGHEST ITEM:   ", highest_name, "(", highest_amt, ")")
+    print("LOWEST ITEM:    ", lowest_name, "(", lowest_amt, ")")
+    
+    ShowFinalFeedback(total_percent)
+
+if _name_ == "_main_":
+    Main()
